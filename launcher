@@ -1,0 +1,14 @@
+#!/bin/sh
+
+ARCH="$(uname -m)"
+DIR=/usr/local/games/UrbanTerror
+
+if [[ -f "$DIR"/Quake3-UrT."$ARCH" ]]; then
+    echo "Quake3-UrT binary deteceted"
+else
+    echo "Unable to load Quake3-UrT binary"
+    exit 127
+fi
+
+pkill -x Quake3-UrT."$ARCH"
+"$DIR"/Quake3-UrT."$ARCH" +exec autoexec.cfg
